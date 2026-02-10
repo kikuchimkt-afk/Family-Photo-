@@ -805,6 +805,32 @@ body {
     backdrop-filter: blur(4px);
 }
 
+.mobile-zoom-btn {
+    display: none;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.1rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 15;
+    transition: all var(--transition-fast);
+}
+
+.mobile-zoom-btn:active {
+    transform: scale(0.95);
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
 /* Modal */
 .modal {
     position: fixed;
@@ -1229,5 +1255,9 @@ body {
 
     .user-info span {
         display: none;
+    }
+
+    .mobile-zoom-btn {
+        display: flex;
     }
 }

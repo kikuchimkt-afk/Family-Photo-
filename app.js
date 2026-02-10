@@ -1300,6 +1300,20 @@ class PhotoAlbumApp {
             if (img) {
                 img.addEventListener('click', (e) => {
                     e.stopPropagation();
+                    // スマホ（768px以下）の場合は選択切り替え、PCの場合はビューワー表示
+                    if (window.matchMedia('(max-width: 768px)').matches) {
+                        this.toggleSelection(card.dataset.id);
+                    } else {
+                        this.openPhotoViewer(card.dataset.id);
+                    }
+                });
+            }
+
+            // Click on zoom button (Mobile only)
+            const zoomBtn = card.querySelector('.mobile-zoom-btn');
+            if (zoomBtn) {
+                zoomBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     this.openPhotoViewer(card.dataset.id);
                 });
             }
@@ -1326,6 +1340,7 @@ class PhotoAlbumApp {
         return `
             <div class="photo-card ${isSelected ? 'selected' : ''}" data-id="${photo.id}">
                 <div class="photo-checkbox"></div>
+                <div class="mobile-zoom-btn">🔍</div>
                 <div class="photo-placeholder">
                     <span class="placeholder-icon">🖼️</span>
                 </div>
